@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     protected Vector2 _position;
 
     protected float _positionY;
-
     protected float _moveVelocity;
 
     public virtual void Initialize(Bee bee)
@@ -32,10 +31,8 @@ public class Enemy : MonoBehaviour
 
     protected virtual void SetDestroyState()
     {
-        _bee.DefeatEvent -= HandleDefeat;
-
         Instantiate(_enemyEffectPrefab, _transform.position, Quaternion.identity);
-
+        _bee.DefeatEvent -= HandleDefeat;
         Destroy(gameObject);
     }
 

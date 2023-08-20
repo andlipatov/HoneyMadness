@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public const float MOVE_X_VELOCITY = 4.0f;
+    public const float MOVE_X_VELOCITY = 6.0f;
 
     [SerializeField] private LevelMovement _levelMovement;
     [SerializeField] private LevelSpawner _levelSpawner;

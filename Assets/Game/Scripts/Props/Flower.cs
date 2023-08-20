@@ -14,6 +14,7 @@ public class Flower : MonoBehaviour
     [SerializeField] private Transform _spriteTransform;
 
     [SerializeField] private GameObject _flowerEffectPrefab;
+    [SerializeField] protected GameObject _enemyEffectPrefab;
 
     private Transform _transform;
 
@@ -62,7 +63,7 @@ public class Flower : MonoBehaviour
                 {
                     _gameController.HoneyIncrement(_HONEY_AMOUNT);
 
-                    SetDestroyState();
+                    SetInteractState();
                 }
                 else if (_distance > _FOLLOWING_DISTANCE)
                 {
@@ -97,12 +98,17 @@ public class Flower : MonoBehaviour
         _state = State.Idle;
     }
 
+    private void SetInteractState()
+    {
+        Instantiate(_flowerEffectPrefab, _transform.position, Quaternion.identity);
+        _bee.DefeatEvent -= HandleDefeat;
+        Destroy(gameObject);
+    }
+
     private void SetDestroyState()
     {
+        Instantiate(_enemyEffectPrefab, _transform.position, Quaternion.identity);
         _bee.DefeatEvent -= HandleDefeat;
-
-        Instantiate(_flowerEffectPrefab, _transform.position, Quaternion.identity);
-
         Destroy(gameObject);
     }
 

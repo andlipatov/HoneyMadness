@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteTransform: {fileID: 5912817933822767406}
   _flowerEffectPrefab: {fileID: 812207842235486044, guid: 5bc1ac83a1d436c4a866b631f942aec9, type: 3}
+  _enemyEffectPrefab: {fileID: 4750120499862916869, guid: e4db8b621b3885a43934d7e71b65ccba, type: 3}
 --- !u!1 &2221079661402426525
 GameObject:
   m_ObjectHideFlags: 0

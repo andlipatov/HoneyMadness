@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Fish : Enemy
 {
-    private const float _START_POSITION_Y = -6.0f;
+    private const float _START_POSITION_Y = -5.0f;
     private const float _END_POSITION_Y = -4.2f;
 
     private const float _MOVE_Y_DISTANCE = _END_POSITION_Y - _START_POSITION_Y;
@@ -11,11 +10,11 @@ public class Fish : Enemy
     private const float _MIN_MOVE_Y_VELOCITY = 0.4f;
     private const float _MAX_MOVE_Y_VELOCITY = 0.8f;
 
-    private const float _MIN_JUMP_DIRECTION_X = 0.5f;
-    private const float _MAX_JUMP_DIRECTION_X = 1.0f;
+    private const float _MIN_JUMP_DIRECTION_X = 1.0f;
+    private const float _MAX_JUMP_DIRECTION_X = 1.5f;
 
-    private const float _MIN_FORCE = 400.0f;
-    private const float _MAX_FORCE = 600.0f;
+    private const float _MIN_FORCE = 300.0f;
+    private const float _MAX_FORCE = 500.0f;
 
     [SerializeField] private Rigidbody2D _rigidbody;
 
@@ -49,7 +48,7 @@ public class Fish : Enemy
             if (t >= 1.0f)
             {
                 _state = State.Jump;
-                
+
                 float jumpDirectionX = Random.Range(_MIN_JUMP_DIRECTION_X, _MAX_JUMP_DIRECTION_X);
                 Vector3 jumpDirection = new Vector2(-jumpDirectionX, 1.0f);
 
@@ -62,7 +61,7 @@ public class Fish : Enemy
         {
             _position += Vector2.left * Level.MOVE_X_VELOCITY * Time.deltaTime;
         }
-        
+
         if (_position.x <= -LevelSpawner.SPAWN_X)
         {
             SetDestroyState();

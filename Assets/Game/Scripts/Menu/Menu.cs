@@ -4,11 +4,10 @@ using UnityEngine.InputSystem;
 
 public class Menu : MonoBehaviour
 {
-    private const string _HONEY_TEXT = "0";
-
-    [SerializeField] private TMP_Text _honeyText;
     [SerializeField] private TMP_Text _inputText;
-
+    [SerializeField] private TMP_Text _honeyText;
+    [SerializeField] private TMP_Text _recordText;
+    
     private GameController _gameController;
 
     private GameState _gameState;
@@ -27,6 +26,10 @@ public class Menu : MonoBehaviour
     public void Initialize(GameController gameController)
     {
         _gameController = gameController;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+        WebGLInput.captureAllKeyboardInput = true;
+#endif
     }
 
     public void Subscribe(Honey honey)
@@ -42,13 +45,12 @@ public class Menu : MonoBehaviour
     public void SetGameState(GameState gameState)
     {
         _gameState = gameState;
-
-        _honeyText.text = _HONEY_TEXT;
         _inputText.enabled = _gameState == GameState.Menu;
     }
 
-    public void HandleHoneyChanged(int amount)
+    public void HandleHoneyChanged(int currentValue, int recordValue)
     {
-        _honeyText.text = amount.ToString();
+        _honeyText.text = currentValue.ToString();
+        _recordText.text = recordValue.ToString();
     }
 }

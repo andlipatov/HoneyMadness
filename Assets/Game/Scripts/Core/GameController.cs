@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
         _menu.Initialize(this);
         _level.Initialize(this);
+        _honey.Initialize();
 
         SetGameState(GameState.Menu);
     }
